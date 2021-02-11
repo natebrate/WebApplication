@@ -1,86 +1,17 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="The Admin landing page">
-    <meta name="author" content="Nathan Brathwaite">
-    <meta name="generator" content="Hugo 0.79.0">
-    <title>Welcome | Home</title>
+{% extends 'main.html' %}
+{% load static %}
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbar-fixed/">
+{% block content %}
+    {{ userName }}
+    <!--BODY CONTENT-->
+    <main class="container-xl" style="color: #0d6efd">
+      <div class="bg-dark p-5 rounded">
+        <h1>Welcome </h1>
+        <p class="lead">This is the Admin Dashboard</p>
+        <a class="btn btn-lg btn-primary" href="{% url 'staff' %}" role="button">View Dashboard &raquo;</a>
+      </div>
+    <hr>
+    </main>
 
+{% endblock %}
 
-
-    <!-- Bootstrap core CSS -->
-<link href="../staticfiles/css/bootstrap.min.css" rel="stylesheet">
-      <link href="../staticfiles/css/main.css" rel="stylesheet">
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-
-    <!-- Custom styles for this template -->
-    <link href="../staticfiles/css/navbar-top-fixed.css" rel="stylesheet">
-  </head>
-  <body>
-
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Admin</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item active">
-          <a class="nav-link" aria-current="page" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="staff.html">Staff Management</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="#">Animal Management</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="#">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-
-<main class="container">
-  <div class="bg-light p-5 rounded">
-    <h1>Welcome </h1>
-    <p class="lead">This is the Admin Dashboard</p>
-    <a class="btn btn-lg btn-primary" href="../staticfiles/css/navbar/" role="button">View Dashboard &raquo;</a>
-  </div>
-</main>
-<footer class="footer navbar-dark bg-dark">
-    &copy Nathan Brathwaite 2021
-</footer>
-
-    <script src="../staticfiles/js/bootstrap.bundle.min.js"></script>
-  </body>
-</html>

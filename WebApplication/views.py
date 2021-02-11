@@ -12,19 +12,21 @@ Place the redirection of response to the appropriate page
 """
 
 from django.http import HttpResponse
+from django.shortcuts import render
+from django.conf import settings
 
 
 def home(request):
-    return HttpResponse("home")
+    return render(request, 'index.html', {})
 
 
 def animals(request):
-    return HttpResponse('animals')
+    return render(request, 'animal.html', {})
 
 
 def species(request):
-    return HttpResponse('species')
+    return render(request, 'species.html', {})
 
 
 def staff(request):
-    return HttpResponse('staff')
+    return render(request, 'staff.html', {})

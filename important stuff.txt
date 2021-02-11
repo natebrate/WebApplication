@@ -1,3 +1,21 @@
+Commands
+
+First remove field scores, Then
+
+python manage.py makemigrations
+python manage.py migrate
+If any error happens
+
+python manage.py migrate --fake
+Then add field scores.Then
+
+python manage.py makemigrations
+python manage.py migrate
+
+
+python manage.py migrate --run-syncdb
+
+
 Master username
 postgres
 Master password
