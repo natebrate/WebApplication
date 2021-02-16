@@ -43,18 +43,18 @@ def staff(request):
     return render(request, 'Main/staff.html', context)
 
 
-def member(request, pk):
-    members = Staff.objects.get(id=pk)
-
-    context = {'members': members}
-    return render(request, 'Main/staffedit.html', context)
-
-
 def updatestaff(request, pk):
     staffer = Staff.objects.get(id=pk)
+    form = StaffForm(instance=staffer)
 
-    context = {'staffer': staffer}
-    return render(request, 'Main/modal.html', context)
+    if request.method == 'POST':
+        form = StaffForm(request.POST, instance=staffer)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {'form': form}
+    return render(request, 'Main/staffedit.html', context)
 
 
 def deletestaff(request, pk):

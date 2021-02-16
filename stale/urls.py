@@ -8,7 +8,6 @@ urlpatterns = [
     path('staff/', views.staff, name='staff'),
     path('animals/', views.animals, name='animal'),
     path('species/', views.species, name='species'),
-    path('member/<str:pk>/', views.member, name='member'),
 
     # staff procedures
     path('staffedit/', views.createstaff, name='createstaff'),

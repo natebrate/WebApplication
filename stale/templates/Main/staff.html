@@ -55,7 +55,7 @@
 						<td>{{staff.email}}</td>
 						<td>{{staff.phone}}</td>
 						<td>
-                            <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="{% url 'updatestaff' staff.id %}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 
                         </td>
@@ -72,6 +72,7 @@
 		</div>
 	</div>
 </div>
+
 <!-- Delete Modal HTML -->
 <div id="deleteEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
