@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 
-    <title>Admin Webpage</title>
+    <title>Admin Website</title>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="author" content="Nathan Brathwaite">
@@ -105,11 +105,6 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'staff' %}">Staff Management</a>
-        </li>
-          <li class="nav-item">
-              {%  for staff in staffs %}
-          <a class="nav-link" href="{% url 'i' i.id %}">Staff edit</a>
-              {% endfor %}
         </li>
           <li class="nav-item">
           <a class="nav-link" href="{% url 'animal' %}">Animal Management</a>

@@ -5,7 +5,8 @@ from stale.models import *
 class StaffForm(ModelForm):
     class Meta:
         model = Staff
-        fields = '__all__'
+        fields = ['user', 'name', 'phone',
+                  'email', 'role']
 
 
 class SpeciesForm(ModelForm):

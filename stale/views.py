@@ -11,11 +11,11 @@ Class-based views
 Place the redirection of response to the appropriate page
 """
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 # Create your views here
 from stale.models import *
-from stale.forms import StaffForm
+from stale.forms import StaffForm, SpeciesForm, AnimalForm
 
 
 def home(request):
@@ -44,18 +44,48 @@ def staff(request):
 
 
 def member(request, pk):
-    staffs = Staff.objects.get(id=pk)
+    members = Staff.objects.get(id=pk)
 
-    context = {'staffs': staffs}
+    context = {'members': members}
     return render(request, 'Main/staffedit.html', context)
+
+
+def updatestaff(request, pk):
+    staffer = Staff.objects.get(id=pk)
+
+    context = {'staffer': staffer}
+    return render(request, 'Main/modal.html', context)
+
+
+def deletestaff(request, pk):
+    deletes = Staff.objects.get(id=pk)
+    if request.method == "POST":
+        deletes.delete()
+        return redirect('/')
+
+    context = {'deletes': deletes}
+    return render(request, 'Main/staff.html', context)
 
 
 def createstaff(request):
     form = StaffForm(request.POST)
+    if form.is_valid():
+        user = form.save(commit=False)
+        user.user = request.user
+        user.save()
+        content = form.clean()
+        context = {'form': form, 'content': content}
+        return render(request, 'Main/staffedit.html', context)
+    else:
+        context = {'form': form}
+        return render(request, 'Main/staffedit.html', context)
+
+
+"""form = StaffForm(request.POST)
     if request.method == 'POST':
         print('Printing POST:', request.POST)
 
         context = {'form': form}
-        return render(request, 'Main/staff.html', context)
+        return render(request, 'Main/modal.html', context)
     else:
-        return render(request, 'Main/staff.html', {})
+        return render(request, 'Main/modal.html', {})"""

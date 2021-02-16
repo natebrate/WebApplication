@@ -8,7 +8,7 @@ class Staff(models.Model):
         ('Admin', 'Admin'),
         ('Staff', 'Staff'),
     )
-    id = models.IntegerField(null=False, primary_key=True)
+    id = models.AutoField(null=False, primary_key=True)
     user = models.CharField(max_length=200, null=True)
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=200, null=True)

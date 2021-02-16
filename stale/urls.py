@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from stale import views
 
@@ -9,10 +9,13 @@ urlpatterns = [
     path('animals/', views.animals, name='animal'),
     path('species/', views.species, name='species'),
     path('member/<str:pk>/', views.member, name='member'),
-    path('staff/', views.createstaff, name='createstaff'),
+
+    # staff procedures
+    path('staffedit/', views.createstaff, name='createstaff'),
+    path(r'^updatestaff/<str:pk>/', views.updatestaff, name='updatestaff'),
+    path('deletestaff/<str:pk>/', views.deletestaff, name="deletestaff"),
 
 ]
-
 
 '''
 1 - Submit email form                         //PasswordResetView.as_view()
