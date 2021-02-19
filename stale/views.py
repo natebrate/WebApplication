@@ -22,6 +22,11 @@ def home(request):
     return render(request, 'Main/index.html', {})
 
 
+def fronts(request):
+    return render(request, 'index.html', {})
+
+
+# ================== ANIMAL PROCEDURES ====================
 def animals(request):
     animal = Animal.objects.all()
 
@@ -30,17 +35,112 @@ def animals(request):
     return render(request, 'Main/animal.html', context)
 
 
+def updateanimal(request, pk):
+    animal = Animal.objects.get(id=pk)
+    form = AnimalForm(instance=animal)
+
+    if request.method == 'POST':
+        form = AnimalForm(request.POST, instance=animal)
+        if form.is_valid():
+            form.save()
+            return redirect('/animals/')
+
+    context = {'form': form}
+    return render(request, 'Main/animalForm.html', context)
+
+
+def deleteanimal(request, pk):
+    deletes = Animal.objects.get(id=pk)
+    if request.method == "POST":
+        deletes.delete()
+        return redirect('/animal')
+
+    context = {'deletes': deletes}
+    return render(request, 'Main/animal.html', context)
+
+
+def createanimal(request):
+    form = AnimalForm(request.POST)
+    if form.is_valid():
+        animal = form.save(commit=False)
+        animal.user = request.user
+        animal.save()
+        content = form.clean()
+        context = {'form': form, 'content': content}
+        return render(request, 'Main/animalForm.html', context)
+    else:
+        context = {'form': form}
+        return render(request, 'Main/animalForm.html', context)
+
+
+# ================ SPECIES PROCEDURES ========================
 def species(request):
     specie = Species.objects.all()
-    return render(request, 'Main/species.html', {'specie': specie})
+
+    total_species = specie.count()
+    context = {'specie': specie, 'total_species': total_species}
+    return render(request, 'Main/species.html', context)
 
 
+def createspecies(request):
+    form = SpeciesForm(request.POST)
+    if form.is_valid():
+        specie = form.save(commit=False)
+        specie.user = request.user
+        specie.save()
+        content = form.clean()
+        context = {'form': form, 'content': content}
+        return redirect('/species/')
+    else:
+        context = {'form': form}
+        return render(request, 'Main/speciesForm.html', context)
+
+
+def updatespecies(request, pk):
+    specie = Species.objects.get(id=pk)
+    form = SpeciesForm(instance=specie)
+
+    if request.method == 'POST':
+        form = SpeciesForm(request.POST, instance=specie)
+        if form.is_valid():
+            form.save()
+            return redirect('/species/')
+
+    context = {'form': form}
+    return render(request, 'Main/speciesForm.html', context)
+
+
+def deletespecies(request, pk):
+    deletes = Species.objects.get(id=pk)
+    if request.method == "POST":
+        deletes.delete()
+        return redirect('/species')
+
+    context = {'deletes': deletes}
+    return render(request, 'Main/species.html', context)
+
+
+# ============== STAFF STUFF ======================
 def staff(request):
     staffs = Staff.objects.all()
 
     total_staff = staffs.count()
     context = {'total_staff': total_staff, 'staffs': staffs}
     return render(request, 'Main/staff.html', context)
+
+
+def createstaff(request):
+    form = StaffForm(request.POST)
+    if form.is_valid():
+        user = form.save(commit=False)
+        user.user = request.user
+        user.save()
+        content = form.clean()
+        context = {'form': form, 'content': content}
+        return render(request, 'Main/staffForm.html', context)
+    else:
+        context = {'form': form}
+        return render(request, 'Main/staffForm.html', context)
 
 
 def updatestaff(request, pk):
@@ -54,9 +154,10 @@ def updatestaff(request, pk):
             return redirect('/')
 
     context = {'form': form}
-    return render(request, 'Main/staffedit.html', context)
+    return render(request, 'Main/staffForm.html', context)
 
 
+# Has not be added to webpage as you dont delete but rather archive
 def deletestaff(request, pk):
     deletes = Staff.objects.get(id=pk)
     if request.method == "POST":
@@ -65,27 +166,3 @@ def deletestaff(request, pk):
 
     context = {'deletes': deletes}
     return render(request, 'Main/staff.html', context)
-
-
-def createstaff(request):
-    form = StaffForm(request.POST)
-    if form.is_valid():
-        user = form.save(commit=False)
-        user.user = request.user
-        user.save()
-        content = form.clean()
-        context = {'form': form, 'content': content}
-        return render(request, 'Main/staffedit.html', context)
-    else:
-        context = {'form': form}
-        return render(request, 'Main/staffedit.html', context)
-
-
-"""form = StaffForm(request.POST)
-    if request.method == 'POST':
-        print('Printing POST:', request.POST)
-
-        context = {'form': form}
-        return render(request, 'Main/modal.html', context)
-    else:
-        return render(request, 'Main/modal.html', {})"""

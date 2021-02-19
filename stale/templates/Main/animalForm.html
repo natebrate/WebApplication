@@ -1,0 +1,16 @@
+{% extends 'Main/main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div align="center">
+    <h1>Animal Form</h1>
+        <form action="#" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+</div>
+
+{% endblock %}

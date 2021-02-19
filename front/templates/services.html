@@ -1,0 +1,77 @@
+{%  extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="banner-header">
+    <div class="container">
+        <h2>Services</h2>
+    </div>
+</div>
+<div class="content">
+<!--services-->
+<div class="services-section">
+    <div class="container">
+        <div class="services-grids">
+            <div class="col-md-3 services-grid">
+                <img src="{% static 'web/images/s1.jpg' %}" class="img-responsive" alt="" />
+                <div class="services-info">
+                <h4>In faucibus</h4>
+                <p>This format perfectly fits in case you need only a single image for your post display. Use Featured image option…</p>
+                </div>
+            </div>
+            <div class="col-md-3 services-grid">
+                <img src="{% static 'web/images/s2.jpg' %}" class="img-responsive" alt="" />
+                <div class="services-info">
+                    <h4>Malesuada</h4>
+                    <p>This format perfectly fits in case you need only a single image for your post display. Use Featured image option…</p>
+                </div>
+            </div>
+            <div class="col-md-3 services-grid">
+                <img src="{% static 'web/images/s3.jpg' %}" class="img-responsive" alt="" />
+                <div class="services-info">
+                    <h4>Sodales orci</h4>
+                    <p>This format perfectly fits in case you need only a single image for your post display. Use Featured image option…</p>
+                </div>
+            </div>
+            <div class="col-md-3 services-grid">
+                <img src="{% static 'web/images/s4.jpg' %}" class="img-responsive" alt="" />
+                <div class="services-info">
+                    <h4>Dayle Peters</h4>
+                    <p>This format perfectly fits in case you need only a single image for your post display. Use Featured image option…</p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+    <!--services-->
+<!--feature-->
+<div class="feature">
+    <div class="container">
+        <h3>Our Features</h3>
+        <div class="feature-grids">
+            <div class="col-md-4 feature-grid">
+                <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
+                <h4>Earum Rerum</h4>
+                <p>Masagni dolores eoquie voluptate msequi nesciunt. Nique porro quisquam est qui dolorem ipsumquia dolor sitamet consectet, adipisci unumquam eius.</p>
+            </div>
+            <div class="col-md-4 feature-grid">
+                <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
+                <h4>Itaque Earum</h4>
+                <p>Masagni dolores eoquie voluptate msequi nesciunt. Nique porro quisquam est qui dolorem ipsumquia dolor sitamet consectet, adipisci unumquam eius.</p>
+            </div>
+            <div class="col-md-4 feature-grid">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <h4>Assumenda est</h4>
+                <p>Masagni dolores eoquie voluptate msequi nesciunt. Nique porro quisquam est qui dolorem ipsumquia dolor sitamet consectet, adipisci unumquam eius.</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+    <!--feature-->
+<!--specials-->
+    {% include 'special.html' %}
+</div>
+{% endblock %}
